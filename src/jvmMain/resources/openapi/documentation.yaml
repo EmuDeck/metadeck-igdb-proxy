@@ -1,0 +1,146 @@
+openapi: "3.0.3"
+info:
+  title: "MetaDeck IGDB Proxy API"
+  description: "Proxys requests to IGDB for auth headers and data formatting, for use with MetaDeck ONLY, unless explicit permission is given by me over on the discord"
+  version: "1.0.0"
+servers:
+- url: "https://api.emudeck.com/metadeck/api/"
+#- url: "http://localhost:8081/"
+paths:
+  /search:
+    post:
+      description: "Search IGDB for a game and return a list of MetaDeck Metadata objects"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetadataDataArray"
+
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+            default: "application/json"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SearchBody"
+  /get:
+    post:
+      description: "Retrieves a game from IGDB from its id and return a MetaDeck Metadata object"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetadataData"
+
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+            default: "application/json"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetBody"
+
+components:
+  schemas:
+    SearchBody:
+      type: object
+      properties:
+        title:
+          description: Title of game to search for
+          type: string
+      example:
+        title: "Super Mario Bros."
+
+    GetBody:
+      type: object
+      properties:
+        id:
+          description: Id of game to retrieve
+          type: integer
+          format: int32
+      example:
+        id: 358
+
+    MetadataData:
+      type: object
+      properties:
+        title:
+          type: string
+        id:
+          type: integer
+          format: int32
+        description:
+          type: string
+        developers:
+          type: array
+          items:
+            $ref: "#/components/schemas/Developer"
+        publishers:
+          type: array
+          items:
+            $ref: "#/components/schemas/Publisher"
+        release_date:
+          type: integer
+          format: int32
+        compat_category:
+          type: integer
+          format: int32
+        compat_notes:
+          type: string
+          format: nullable
+        store_categories:
+          type: array
+          items:
+            type: integer
+            format: int32
+      example:
+        title: Super Mario Bros.
+        id: 358
+        description: A side scrolling 2D platformer and first entry in the Super Mario franchise,
+          Super Mario Bros. follows Italian plumber Mario as he treks across many levels of
+          platforming challenges featuring hostile enemies to rescue Princess Peach from the
+          evil king Bowser.
+        developers:
+          - name: Nintendo R&D4
+            url: https://www.igdb.com/companies/nintendo-r-and-d4
+        publishers:
+          - name: Nintendo
+            url: https://www.igdb.com/companies/nintendo
+          - name: Playtronic
+            url: https://www.igdb.com/companies/playtronic
+        release_date: 495417600
+        compat_category: 3
+        compat_notes:
+        store_categories:
+          - 2
+          - 1
+    MetadataDataArray:
+      type: array
+      items:
+        $ref: "#/components/schemas/MetadataData"
+    Developer:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+    Publisher:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string

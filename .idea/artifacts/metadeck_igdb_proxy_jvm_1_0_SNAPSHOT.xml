@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="metadeck-igdb-proxy-jvm-1.0-SNAPSHOT">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="metadeck-igdb-proxy-jvm-1.0-SNAPSHOT.jar">
+      <element id="module-output" name="metadeck-igdb-proxy.jvmMain" />
+    </root>
+  </artifact>
+</component>
