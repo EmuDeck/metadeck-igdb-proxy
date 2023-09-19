@@ -1,18 +1,16 @@
-package com.withertech.proxy.routes.metadata
+package com.emudeck.igdb_proxy.routes.metadata
 
-import com.withertech.proxy.API_URL
-import com.withertech.proxy.auth
-import com.withertech.proxy.client
-import com.withertech.proxy.routes.metadata.models.GameResponse
-import com.withertech.proxy.routes.metadata.models.MetadataData
+import com.emudeck.igdb_proxy.API_URL
+import com.emudeck.igdb_proxy.auth
+import com.emudeck.igdb_proxy.client
+import com.emudeck.igdb_proxy.routes.metadata.models.GameResponse
+import com.emudeck.igdb_proxy.routes.metadata.models.MetadataData
 import io.github.reactivecircus.cache4k.Cache
 import io.ktor.client.call.*
 import io.ktor.client.request.*
-import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.serialization.Serializable
 import kotlin.time.Duration.Companion.hours
 

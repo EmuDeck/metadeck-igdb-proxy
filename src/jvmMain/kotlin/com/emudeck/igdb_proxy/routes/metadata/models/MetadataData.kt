@@ -1,4 +1,4 @@
-package com.withertech.proxy.routes.metadata.models
+package com.emudeck.igdb_proxy.routes.metadata.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

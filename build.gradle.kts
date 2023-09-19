@@ -11,7 +11,7 @@ plugins {
 	application
 }
 
-group = "com.withertech"
+group = "com.emudeck"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -76,7 +76,11 @@ kotlin {
 	            implementation("io.github.reactivecircus.cache4k:cache4k:0.11.0")
             }
         }
-        val jvmTest by getting
+        val jvmTest by getting {
+			dependencies {
+				implementation(kotlin("test"))
+			}
+        }
         val jsMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.346")
@@ -89,7 +93,7 @@ kotlin {
 }
 
 application {
-    mainClass.set("com.withertech.proxy.ServerKt")
+    mainClass.set("com.emudeck.igdb-proxy.ServerKt")
 }
 
 tasks.named<Copy>("jvmProcessResources") {

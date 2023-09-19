@@ -1,6 +1,6 @@
-package com.withertech.proxy.routes.metadata.models
+package com.emudeck.igdb_proxy.routes.metadata.models
 
-import com.withertech.proxy.client
+import com.emudeck.igdb_proxy.client
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.util.date.*

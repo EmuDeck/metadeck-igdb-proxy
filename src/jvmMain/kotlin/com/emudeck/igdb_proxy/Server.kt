@@ -1,9 +1,9 @@
-package com.withertech.proxy
+package com.emudeck.igdb_proxy
 
-import com.withertech.proxy.routes.docs
-import com.withertech.proxy.routes.metadata.api
-import com.withertech.proxy.routes.metadata.serveQueue
-import com.withertech.proxy.routes.root
+import com.emudeck.igdb_proxy.routes.docs
+import com.emudeck.igdb_proxy.routes.metadata.api
+import com.emudeck.igdb_proxy.routes.metadata.serveQueue
+import com.emudeck.igdb_proxy.routes.root
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.apache5.*

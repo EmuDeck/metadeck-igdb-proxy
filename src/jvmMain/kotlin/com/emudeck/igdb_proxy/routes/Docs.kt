@@ -1,4 +1,4 @@
-package com.withertech.proxy.routes
+package com.emudeck.igdb_proxy.routes
 
 import io.ktor.http.*
 import io.ktor.server.application.*

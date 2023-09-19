@@ -1,4 +1,4 @@
-package com.withertech.proxy.routes.metadata.models
+package com.emudeck.igdb_proxy.routes.metadata.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -76,17 +76,21 @@ data class GameResponse(
 				{
 					if (involvedCompany.developer == true)
 					{
-						gameDevs.add(Developer(
+						gameDevs.add(
+							Developer(
 							involvedCompany.company.name,
 							involvedCompany.company.url
-						))
+						)
+						)
 					}
 					if (involvedCompany.publisher == true)
 					{
-						gamePubs.add(Publisher(
+						gamePubs.add(
+							Publisher(
 							involvedCompany.company.name,
 							involvedCompany.company.url
-						))
+						)
+						)
 					}
 				}
             }

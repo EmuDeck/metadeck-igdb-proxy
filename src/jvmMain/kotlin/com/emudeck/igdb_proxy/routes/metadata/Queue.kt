@@ -1,8 +1,8 @@
-package com.withertech.proxy.routes.metadata
+package com.emudeck.igdb_proxy.routes.metadata
 
-import com.withertech.proxy.API_URL
-import com.withertech.proxy.auth
-import com.withertech.proxy.client
+import com.emudeck.igdb_proxy.API_URL
+import com.emudeck.igdb_proxy.auth
+import com.emudeck.igdb_proxy.client
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.server.application.*
