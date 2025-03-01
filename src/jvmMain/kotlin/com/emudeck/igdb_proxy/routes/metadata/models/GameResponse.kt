@@ -135,7 +135,7 @@ data class GameResponse(
 @Serializable
 data class GameMode(
 	@SerialName("id") val id: Int,
-    @SerialName("slug") val slug: String?
+    @SerialName("slug") val slug: String? = null
 )
 
 @Serializable
@@ -151,7 +151,7 @@ data class MultiplayerMode(
 @Serializable
 data class Platform(
 	@SerialName("id") val id: Int,
-	@SerialName("category") val category: PlatformCategory?
+	@SerialName("category") val category: PlatformCategory? = null
 )
 
 @Serializable

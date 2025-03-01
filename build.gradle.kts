@@ -21,7 +21,7 @@ repositories {
 
 kotlin {
     jvm {
-        jvmToolchain(17)
+        jvmToolchain(19)
         withJava()
         testRuns.named("test") {
             executionTask.configure {
@@ -93,7 +93,7 @@ kotlin {
 }
 
 application {
-    mainClass.set("com.emudeck.igdb-proxy.ServerKt")
+    mainClass.set("com.emudeck.igdb_proxy.ServerKt")
 }
 
 tasks.named<Copy>("jvmProcessResources") {

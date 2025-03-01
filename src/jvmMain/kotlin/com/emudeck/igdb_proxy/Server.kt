@@ -20,14 +20,17 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.routing.*
 import io.ktor.util.logging.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import okio.FileSystem
 import okio.Path.Companion.toPath
+import java.util.concurrent.TimeUnit
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation.Plugin as ClientContentNegotiation
 
 const val AUTH_URL = "https://id.twitch.tv/oauth2/token"
@@ -50,10 +53,15 @@ val json = Json {
 val auth: AuthData = readAuthData()
 
 
-fun main() = runBlocking {
+fun main(): Unit = runBlocking {
 	val job = launch { serveQueue() }
-	embeddedServer(Netty, port = 8083, host = "127.0.0.1", module = Application::module).start(wait = true)
-	job.cancel()
+	suspendCancellableCoroutine {
+		val server = embeddedServer(Netty, port = 8083, host = "127.0.0.1", module = Application::module)
+		server.addShutdownHook {
+			job.cancel()
+		}
+		server.start()
+	}
 }
 
 

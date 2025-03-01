@@ -16,7 +16,7 @@ fun HTML.index()
 		div {
 			id = "root"
 		}
-		script(src = "/metadeck/api/static/metadeck-igdb-proxy.js") {}
+		script(src = "/static/metadeck-igdb-proxy.js") {}
 	}
 }
 

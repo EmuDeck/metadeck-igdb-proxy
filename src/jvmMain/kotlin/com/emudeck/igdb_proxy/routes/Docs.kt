@@ -13,13 +13,13 @@ import java.io.FileNotFoundException
 
 fun Route.docs()
 {
-	swaggerUI(path = "docs", prefix = "/metadeck/api")
+	swaggerUI(path = "docs")
 }
 
 fun Route.swaggerUI(
 	path: String,
 	swaggerFile: String = "openapi/documentation.yaml",
-	prefix: String = "",
+	prefix: String = ".",
 	block: SwaggerConfig.() -> Unit = {}
 ) {
 	val resource = application.environment.classLoader.getResourceAsStream(swaggerFile)
