@@ -7,12 +7,11 @@ val logback_version: String by project
 plugins {
     kotlin("multiplatform") version "1.9.0"
 	kotlin("plugin.serialization") version "1.9.0"
-	id("com.github.johnrengelman.shadow") version "7.1.1"
 	application
 }
 
 group = "com.emudeck"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -66,10 +65,10 @@ kotlin {
 
 	            implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
 
-	            implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
-	            implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
-	            implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
-	            implementation("com.h2database:h2:$h2_version")
+//	            implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
+//	            implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
+//	            implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
+//	            implementation("com.h2database:h2:$h2_version")
 
 	            implementation("com.squareup.okio:okio:$okio_version")
 
@@ -104,10 +103,4 @@ tasks.named<Copy>("jvmProcessResources") {
 tasks.named<JavaExec>("run") {
     dependsOn(tasks.named<Jar>("jvmJar"))
     classpath(tasks.named<Jar>("jvmJar"))
-}
-
-tasks {
-	"build" {
-		dependsOn(shadowJar)
-	}
 }
